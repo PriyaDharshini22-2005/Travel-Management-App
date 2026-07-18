@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Estimation - Trip Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 15px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .page-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .budget-status {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .budget-item {
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-weight: 600;
+        }
+
+        .budget-allocated {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .budget-estimated {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+
+        .budget-remaining {
+            background: rgba(255, 193, 7, 0.1);
+            color: #FF9800;
+        }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+        }
+
+        .expenses-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .expense-category {
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: rgba(102, 126, 234, 0.15);
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .category-total {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        .category-details {
+            padding: 20px;
+            display: none;
+        }
+
+        .category-details.active {
+            display: block;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .expense-item:last-child {
+            border-bottom: none;
+        }
+
+        .expense-name {
+            font-weight: 500;
+        }
+
+        .expense-calculation {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .expense-price {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .total-amount {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .total-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .budget-comparison {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .over-budget {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+        }
+
+        .within-budget {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+
+        .suggestions-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .suggestion-item {
+            background: rgba(255, 193, 7, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FF9800;
+        }
+
+        .suggestion-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .suggestion-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .suggestion-savings {
+            font-size: 14px;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .budget-status {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-content">
+            <div class="logo">🌍 TripPlanner</div>
+            <div class="nav-links">
+                <a href="#" onclick="navigateTo('plan')">Plan Trip</a>
+                <a href="#" onclick="navigateTo('hotels')">Hotels</a>
+                <a href="#" onclick="navigateTo('places')">Places</a>
+                <a href="#" onclick="navigateTo('expenses')" class="active">Expenses</a>
+                <a href="#" onclick="navigateTo('profile')">Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>💰 Trip Expense Estimation</h1>
+            <p>Detailed breakdown of your trip costs and budget analysis</p>
+            <div class="budget-status">
+                <div class="budget-item budget-allocated">
+                    <div>Budget Allocated</div>
+                    <div id="budgetAllocated">$2,500</div>
+                </div>
+                <div class="budget-item budget-estimated">
+                    <div>Total Estimated</div>
+                    <div id="totalEstimated">$2,180</div>
+                </div>
+                <div class="budget-item budget-remaining">
+                    <div>Remaining</div>
+                    <div id="budgetRemaining">$320</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-layout">
+            <div class="expenses-section">
+                <div class="expense-category">
+                    <div class="category-header" onclick="toggleCategory('accommodation')">
+                        <div class="category-title">
+                            <span>🏨</span>
+                            <span>Accommodation</span>
+                        </div>
+                        <div class="category-total" id="accommodationTotal">$1,120</div>
+                    </div>
+                    <div class="category-details" id="accommodation-details">
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Hotel de Luxe Paris</div>
+                                <div class="expense-calculation">4 nights × $280/night</div>
+                            </div>
+                            <div class="expense-price">$1,120</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expense-category">
+                    <div class="category-header" onclick="toggleCategory('attractions')">
+                        <div class="category-title">
+                            <span>🎫</span>
+                            <span>Attractions & Activities</span>
+                        </div>
+                        <div class="category-total" id="attractionsTotal">$142</div>
+                    </div>
+                    <div class="category-details" id="attractions-details">
+                        <div id="attractionsList">
+                            <div class="expense-item">
+                                <div>
+                                    <div class="expense-name">Eiffel Tower</div>
+                                    <div class="expense-calculation">$29 × 2 people</div>
+                                </div>
+                                <div class="expense-price">$58</div>
+                            </div>
+                            <div class="expense-item">
+                                <div>
+                                    <div class="expense-name">Louvre Museum</div>
+                                    <div class="expense-calculation">$17 × 2 people</div>
+                                </div>
+                                <div class="expense-price">$34</div>
+                            </div>
+                            <div class="expense-item">
+                                <div>
+                                    <div class="expense-name">Seine River Cruise</div>
+                                    <div class="expense-calculation">$25 × 2 people</div>
+                                </div>
+                                <div class="expense-price">$50</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expense-category">
+                    <div class="category-header" onclick="toggleCategory('food')">
+                        <div class="category-title">
+                            <span>🍽️</span>
+                            <span>Food & Dining</span>
+                        </div>
+                        <div class="category-total" id="foodTotal">$600</div>
+                    </div>
+                    <div class="category-details" id="food-details">
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Breakfast</div>
+                                <div class="expense-calculation">5 days × $25/day × 2 people</div>
+                            </div>
+                            <div class="expense-price">$250</div>
+                        </div>
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Lunch</div>
+                                <div class="expense-calculation">5 days × $35/day × 2 people</div>
+                            </div>
+                            <div class="expense-price">$350</div>
+                        </div>
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Dinner</div>
+                                <div class="expense-calculation">5 days × $50/day × 2 people</div>
+                            </div>
+                            <div class="expense-price">$500</div>
+                        </div>
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Snacks & Drinks</div>
+                                <div class="expense-calculation">5 days × $20/day</div>
+                            </div>
+                            <div class="expense-price">$100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expense-category">
+                    <div class="category-header" onclick="toggleCategory('transport')">
+                        <div class="category-title">
+                            <span>🚗</span>
+                            <span>Transportation</span>
+                        </div>
+                        <div class="category-total" id="transportTotal">$258</div>
+                    </div>
+                    <div class="category-details" id="transport-details">
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Airport Transfers</div>
+                                <div class="expense-calculation">Round trip taxi</div>
+                            </div>
+                            <div class="expense-price">$80</div>
+                        </div>
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Metro/Bus Pass</div>
+                                <div class="expense-calculation">5-day pass × 2 people</div>
+                            </div>
+                            <div class="expense-price">$78</div>
+                        </div>
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Taxis & Uber</div>
+                                <div class="expense-calculation">Estimated local transport</div>
+                            </div>
+                            <div class="expense-price">$100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expense-category">
+                    <div class="category-header" onclick="toggleCategory('misc')">
+                        <div class="category-title">
+                            <span>🛍️</span>
+                            <span>Miscellaneous</span>
+                        </div>
+                        <div class="category-total" id="miscTotal">$200</div>
+                    </div>
+                    <div class="category-details" id="misc-details">
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Shopping & Souvenirs</div>
+                                <div class="expense-calculation">Estimated budget</div>
+                            </div>
+                            <div class="expense-price">$150</div>
+                        </div>
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">Tips & Service</div>
+                                <div class="expense-calculation">Restaurant tips, etc.</div>
+                            </div>
+                            <div class="expense-price">$50</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="summary-card">
+                    <div class="total-amount">
+                        <div class="total-label">Total Trip Cost</div>
+                        <div class="total-price" id="grandTotal">$2,220</div>
+                    </div>
+                    
+                    <div class="budget-comparison within-budget" id="budgetStatus">
+                        <div style="font-weight: 600; margin-bottom: 10px;">✅ Within Budget!</div>
+                        <div>You're staying <strong>$280</strong> under your allocated budget.</div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="confirmBooking()">
+                            Confirm & Book Trip
+                        </button>
+                        <button class="btn btn-secondary" onclick="goToProfile()">
+                            Save to Profile
+                        </button>
+                    </div>
+                </div>
+
+                <div class="suggestions-card" id="suggestionsCard">
+                    <h3 style="margin-bottom: 20px;">💡 Money-Saving Tips</h3>
+                    
+                    <div class="suggestion-item">
+                        <div class="suggestion-title">Consider Budget Hotels</div>
+                        <div class="suggestion-desc">Switch to a 3-star hotel in a central location</div>
+                        <div class="suggestion-savings">Potential savings: $400-600</div>
+                    </div>
+
+                    <div class="suggestion-item">
+                        <div class="suggestion-title">Cook Some Meals</div>
+                        <div class="suggestion-desc">Book accommodation with kitchenette for breakfast/lunch</div>
+                        <div class="suggestion-savings">Potential savings: $200-300</div>
+                    </div>
+
+                    <div class="suggestion-item">
+                        <div class="suggestion-title">Free Walking Tours</div>
+                        <div class="suggestion-desc">Replace some paid attractions with free walking tours</div>
+                        <div class="suggestion-savings">Potential savings: $50-100</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let expenseData = {
+            accommodation: 1120,
+            attractions: 142,
+            food: 600,
+            transport: 258,
+            misc: 200
+        };
+
+        let tripDays = 5;
+        let numTravelers = 2;
+        let budgetRange = '1000-2500';
+
+        function toggleCategory(categoryId) {
+            const details = document.getElementById(categoryId + '-details');
+            details.classList.toggle('active');
+        }
+
+        function navigateTo(section) {
+            alert(`Navigation to ${section} page (would redirect in a real application)`);
+        }
+
+        function loadTripData() {
+            // Try to get data from sessionStorage, but provide defaults if not available
+            const tripData = JSON.parse(window.sessionStorage?.getItem('tripData') || '{}');
+            const selectedHotel = JSON.parse(window.sessionStorage?.getItem('selectedHotel') || '{}');
+            const selectedPlaces = JSON.parse(window.sessionStorage?.getItem('selectedPlaces') || '[]');
+
+            if (tripData.startDate && tripData.endDate) {
+                const start = new Date(tripData.startDate);
+                const end = new Date(tripData.endDate);
+                tripDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+            }
+
+            if (tripData.travelers) {
+                numTravelers = parseInt(tripData.travelers.replace('+', '')) || 2;
+            }
+
+            if (tripData.budget) {
+                budgetRange = tripData.budget;
+            }
+
+            // Calculate accommodation cost
+            if (selectedHotel.price) {
+                expenseData.accommodation = selectedHotel.price * tripDays;
+                document.getElementById('accommodationTotal').textContent = `$${expenseData.accommodation}`;
+                
+                const accommodationDetails = document.getElementById('accommodation-details');
+                accommodationDetails.innerHTML = `
+                    <div class="expense-item">
+                        <div>
+                            <div class="expense-name">${selectedHotel.name}</div>
+                            <div class="expense-calculation">${tripDays} nights × $${selectedHotel.price}/night</div>
+                        </div>
+                        <div class="expense-price">$${expenseData.accommodation}</div>
+                    </div>
+                `;
+            }
+
+            // Calculate attractions cost
+            let attractionsTotal = 0;
+            const attractionsList = document.getElementById('attractionsList');
+            
+            if (selectedPlaces.length > 0) {
+                attractionsList.innerHTML = '';
+                selectedPlaces.forEach(place => {
+                    const price = place.price === 'Free' ? 0 : parseInt(place.price.replace('$', '')) || 0;
+                    const totalPrice = price * numTravelers;
+                    attractionsTotal += totalPrice;
+
+                    attractionsList.innerHTML += `
+                        <div class="expense-item">
+                            <div>
+                                <div class="expense-name">${place.name}</div>
+                                <div class="expense-calculation">${price === 0 ? 'Free entry' : `$${price} × ${numTravelers} people`}</div>
+                            </div>
+                            <div class="expense-price">$${totalPrice}</div>
+                        </div>
+                    `;
+                });
+                
+                expenseData.attractions = attractionsTotal;
+                document.getElementById('attractionsTotal').textContent = `$${attractionsTotal}`;
+            }
+
+            // Calculate food costs
+            const foodCosts = {
+                breakfast: 25 * tripDays * numTravelers,
+                lunch: 35 * tripDays * numTravelers,
+                dinner: 50 * tripDays * numTravelers,
+                snacks: 20 * tripDays
+            };
+
+            expenseData.food = Object.values(foodCosts).reduce((a, b) => a + b, 0);
+            document.getElementById('foodTotal').textContent = `$${expenseData.food}`;
+
+            const foodDetails = document.getElementById('food-details');
+            foodDetails.innerHTML = `
+                <div class="expense-item">
+                    <div>
+                        <div class="expense-name">Breakfast</div>
+                        <div class="expense-calculation">${tripDays} days × $25/day × ${numTravelers} people</div>
+                    </div>
+                    <div class="expense-price">$${foodCosts.breakfast}</div>
+                </div>
+                <div class="expense-item">
+                    <div>
+                        <div class="expense-name">Lunch</div>
+                        <div class="expense-calculation">${tripDays} days × $35/day × ${numTravelers} people</div>
+                    </div>
+                    <div class="expense-price">$${foodCosts.lunch}</div>
+                </div>
+                <div class="expense-item">
+                    <div>
+                        <div class="expense-name">Dinner</div>
+                        <div class="expense-calculation">${tripDays} days × $50/day × ${numTravelers} people</div>
+                    </div>
+                    <div class="expense-price">$${foodCosts.dinner}</div>
+                </div>
+                <div class="expense-item">
+                    <div>
+                        <div class="expense-name">Snacks & Drinks</div>
+                        <div class="expense-calculation">${tripDays} days × $20/day</div>
+                    </div>
+                    <div class="expense-price">$${foodCosts.snacks}</div>
+                </div>
+            `;
+
+            updateTotals();
+        }
+
+        function updateTotals() {
+            const total = Object.values(expenseData).reduce((a, b) => a + b, 0);
+            document.getElementById('grandTotal').textContent = `$${total.toLocaleString()}`;
+            document.getElementById('totalEstimated').textContent = `$${total.toLocaleString()}`;
+
+            const budgetMax = parseInt(budgetRange.split('-')[1]) || 2500;
+            document.getElementById('budgetAllocated').textContent = `$${budgetMax.toLocaleString()}`;
+
+            const remaining = budgetMax - total;
+            document.getElementById('budgetRemaining').textContent = `$${Math.abs(remaining).toLocaleString()}`;
+
+            const budgetStatus = document.getElementById('budgetStatus');
+            const budgetRemainingElement = document.getElementById('budgetRemaining');
+            
+            if (remaining >= 0) {
+                budgetStatus.className = 'budget-comparison within-budget';
+                budgetStatus.innerHTML = `
+                    <div style="font-weight: 600; margin-bottom: 10px;">✅ Within Budget!</div>
+                    <div>You're staying <strong>$${remaining}</strong> under your allocated budget.</div>
+                `;
+                budgetRemainingElement.parentElement.className = 'budget-item budget-remaining';
+                budgetRemainingElement.parentElement.querySelector('div').textContent = 'Remaining';
+            } else {
+                budgetStatus.className = 'budget-comparison over-budget';
+                budgetStatus.innerHTML = `
+                    <div style="font-weight: 600; margin-bottom: 10px;">⚠️ Over Budget!</div>
+                    <div>You're <strong>$${Math.abs(remaining)}</strong> over your allocated budget.</div>
+                `;
+                budgetRemainingElement.parentElement.className = 'budget-item budget-estimated';
+                budgetRemainingElement.parentElement.style.background = 'rgba(244, 67, 54, 0.1)';
+                budgetRemainingElement.parentElement.style.color = '#f44336';
+                budgetRemainingElement.parentElement.querySelector('div').textContent = 'Over Budget';
+            }
+        }
+
+        function confirmBooking() {
+            alert('🎉 Great! Your trip details have been saved. In a real application, this would proceed to payment and booking confirmation.');
+            // In a real app, this would navigate to profile page
+            console.log('Redirecting to profile page...');
+        }
+
+        function goToProfile() {
+            const tripSummary = {
+                destination: JSON.parse(window.sessionStorage?.getItem('tripData') || '{}').destination || 'Paris, France',
+                hotel: JSON.parse(window.sessionStorage?.getItem('selectedHotel') || '{}'),
+                places: JSON.parse(window.sessionStorage?.getItem('selectedPlaces') || '[]'),
+                totalCost: Object.values(expenseData).reduce((a, b) => a + b, 0),
+                days: tripDays,
+                travelers: numTravelers,
+                dates: {
+                    start: JSON.parse(window.sessionStorage?.getItem('tripData') || '{}').startDate,
+                    end: JSON.parse(window.sessionStorage?.getItem('tripData') || '{}').endDate
+                }
+            };
+
+            // Save to memory instead of localStorage for this demo
+            window.savedTrips = window.savedTrips || [];
+            window.savedTrips.unshift({
+                ...tripSummary,
+                id: Date.now(),
+                savedAt: new Date().toISOString()
+            });
+
+            alert('Trip saved to profile! In a real application, this would navigate to your profile page.');
+            console.log('Trip saved:', window.savedTrips);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTripData();
+            
+            // Open first category by default
+            document.getElementById('accommodation-details').classList.add('active');
+        });
+    </script>
+</body>
+</html>

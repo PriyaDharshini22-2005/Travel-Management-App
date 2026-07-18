@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelAI Pro - Smart Travel Planning</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                        success: '#28a745',
+                        danger: '#dc3545',
+                        warning: '#ffc107',
+                        info: '#17a2b8',
+                        light: '#f8f9fa',
+                        dark: '#343a40',
+                        white: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary to-secondary">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-blur-lg py-4 shadow-lg">
+        <div class="container mx-auto px-5">
+            <div class="flex justify-between items-center">
+                <a href="{% url 'home' %}" class="text-2xl font-bold text-primary">
+                    <i class="fas fa-globe mr-2"></i> TravelAI Pro
+                </a>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="{% url 'home' %}" class="text-primary font-medium hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="{% url 'trip_planner' %}" class="text-dark font-medium hover:text-primary transition-colors">Plan Trip</a></li>
+                    <li><a href="{% url 'about' %}" class="text-dark font-medium hover:text-primary transition-colors">About</a></li>
+                    <li><a href="{% url 'contact' %}" class="text-dark font-medium hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+                <div class="flex space-x-4">
+                    <!-- Add login/register buttons here if needed -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 min-h-screen">
+        <!-- Home Page Content -->
+        <div class="container mx-auto px-5">
+            <div class="text-center py-16 text-white">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">🌍 Smart Travel Planning with AI</h1>
+                <p class="text-xl mb-8 opacity-90">Create personalized itineraries with weather forecasts, budget optimization, and AI-powered recommendations</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'trip_planner' %}" class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center">
+                            <i class="fas fa-route mr-2"></i> Start Planning
+                        </a>
+                        <a href="#" class="px-6 py-3 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-primary transition-all flex items-center justify-center">
+                            <i class="fas fa-robot mr-2"></i> Try AI Assistant
+                        </a>
+                    {% else %}
+                        <a href="{% url 'register' %}" class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center">
+                            <i class="fas fa-user-plus mr-2"></i> Get Started - Sign Up
+                        </a>
+                        <a href="{% url 'login' %}" class="px-6 py-3 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-primary transition-all flex items-center justify-center">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Login
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-16">
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-brain text-5xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">AI-Powered Planning</h3>
+                    <p class="text-gray-600">Our advanced AI analyzes your preferences, budget, and travel style to create perfect itineraries</p>
+                </div>
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-cloud-sun text-5xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Weather Integration</h3>
+                    <p class="text-gray-600">Real-time weather forecasts help optimize your activities and packing lists</p>
+                </div>
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-dollar-sign text-5xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Smart Budgeting</h3>
+                    <p class="text-gray-600">Intelligent budget allocation across accommodation, activities, food, and transportation</p>
+                </div>
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-map-marked-alt text-5xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Local Insights</h3>
+                    <p class="text-gray-600">Discover hidden gems and local experiences recommended by AI and community</p>
+                </div>
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-mobile-alt text-5xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Mobile Companion</h3>
+                    <p class="text-gray-600">Access your itineraries offline and get real-time updates during your trip</p>
+                </div>
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-users text-5xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Group Planning</h3>
+                    <p class="text-gray-600">Collaborate with travel companions and find activities everyone will enjoy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

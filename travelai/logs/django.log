@@ -1,0 +1,553 @@
+INFO 2025-09-22 21:26:12,131 autoreload 7384 6428 Watching for file changes with StatReloader
+INFO 2025-09-22 21:26:23,192 basehttp 7384 2920 "GET / HTTP/1.1" 200 1582
+WARNING 2025-09-22 21:26:24,472 log 7384 16044 Not Found: /favicon.ico
+WARNING 2025-09-22 21:26:24,473 basehttp 7384 16044 "GET /favicon.ico HTTP/1.1" 404 4164
+INFO 2025-09-22 21:26:41,298 basehttp 7384 16944 "GET / HTTP/1.1" 200 1582
+INFO 2025-09-22 21:26:44,816 basehttp 7384 16944 "POST / HTTP/1.1" 302 0
+INFO 2025-09-22 21:26:44,840 basehttp 7384 16944 "GET /home/ HTTP/1.1" 200 6693
+INFO 2025-09-22 21:26:50,551 basehttp 7384 16944 "GET /trip_planner/ HTTP/1.1" 200 10865
+INFO 2025-09-22 21:27:12,781 basehttp 7384 16944 "POST /trip_planner/ HTTP/1.1" 302 0
+INFO 2025-09-22 21:27:12,819 views 7384 16944 Searching destination: China
+INFO 2025-09-22 21:27:14,366 views 7384 16944 API Response Status: 200
+INFO 2025-09-22 21:27:14,368 views 7384 16944 API Response Headers: {'Date': 'Mon, 22 Sep 2025 15:57:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-Pzc3RZj/JXyeQDZkdv4LI7FXQIs"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2511508', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '39', 'X-RateLimit-requests-Reset': '2511508', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499989', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2511508', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '7a821a035b7e5cbd26c743efe88d18afcc7f54346b01c69af7d9b1cb770984c5'}
+INFO 2025-09-22 21:27:14,370 views 7384 16944 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758556634006,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "country": "China",
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+      "name": "China",
+      "lc": "en",
+      "label": "China",
+      "type": "co",
+      "nr_hotels": 21091,
+      "city_ufi": null,
+      "roundtrip": "GhBjMWM5NzAyY2JlNzcw...
+INFO 2025-09-22 21:27:14,373 views 7384 16944 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:27:16,327 views 7384 16944 Hotels API Response Status: 200
+INFO 2025-09-22 21:27:16,333 views 7384 16944 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:27:16,368 basehttp 7384 16944 "GET /hotels/ HTTP/1.1" 200 54911
+INFO 2025-09-22 21:37:11,829 autoreload 7384 6428 D:\travel2\travel\travelai\main\views.py changed, reloading.
+INFO 2025-09-22 21:37:13,503 autoreload 20680 18076 Watching for file changes with StatReloader
+INFO 2025-09-22 21:37:28,638 autoreload 20680 18076 D:\travel2\travel\travelai\main\views.py changed, reloading.
+INFO 2025-09-22 21:37:30,206 autoreload 16108 14804 Watching for file changes with StatReloader
+INFO 2025-09-22 21:46:06,551 autoreload 16108 14804 D:\travel2\travel\travelai\main\views.py changed, reloading.
+INFO 2025-09-22 21:46:08,065 autoreload 2664 12244 Watching for file changes with StatReloader
+INFO 2025-09-22 21:50:42,621 views 2664 13492 Searching destination: China
+INFO 2025-09-22 21:50:44,784 views 2664 13492 API Response Status: 200
+INFO 2025-09-22 21:50:44,786 views 2664 13492 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:20:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-3JKc5sFGaw0bD23WLCPSUVCDLvk"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2510098', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '37', 'X-RateLimit-requests-Reset': '2510098', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499987', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2510098', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'cdd64f02a2e3a38d1731a58b057962cdba6fabed0bbc365509f19766e3925ee5'}
+INFO 2025-09-22 21:50:44,788 views 2664 13492 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558044457,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "country": "China",
+      "city_ufi": null,
+      "roundtrip": "GhBhMWFlNzJlZWExNjEwMTg4IAAoATICZW46BUNoaW5hQABKAFAA",
+      "cc1": "cn",
+      "longitude": 103.85791,
+      "nr_hotels": 21091,
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+ ...
+INFO 2025-09-22 21:50:44,792 views 2664 13492 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:50:46,618 views 2664 13492 Hotels API Response Status: 200
+INFO 2025-09-22 21:50:46,622 views 2664 13492 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:50:46,718 basehttp 2664 13492 "GET /hotels/ HTTP/1.1" 200 37255
+INFO 2025-09-22 21:51:06,814 views 2664 13492 Searching destination: China
+INFO 2025-09-22 21:51:07,945 views 2664 13492 API Response Status: 200
+INFO 2025-09-22 21:51:07,946 views 2664 13492 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:21:07 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-cRLkZq3E4k4QxG6tS3BGTi2Jrs4"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2510075', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '35', 'X-RateLimit-requests-Reset': '2510075', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499985', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2510075', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'bad2e8e27abdbe1a492d8346692f7d9627f9c4eaf07d7e6e45b1152f8fa144ff'}
+INFO 2025-09-22 21:51:07,949 views 2664 13492 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558067689,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "name": "China",
+      "type": "co",
+      "dest_type": "country",
+      "nr_hotels": 21091,
+      "hotels": 21091,
+      "city_name": "",
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+      "label": "China",
+      "latitude": 36.560863,
+   ...
+INFO 2025-09-22 21:51:07,951 views 2664 13492 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:51:10,502 basehttp 2664 9728 "GET /places/ HTTP/1.1" 200 21963
+INFO 2025-09-22 21:51:12,342 views 2664 13492 Hotels API Response Status: 200
+INFO 2025-09-22 21:51:12,347 views 2664 13492 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:51:12,355 basehttp 2664 13492 - Broken pipe from ('127.0.0.1', 60366)
+INFO 2025-09-22 21:51:13,900 views 2664 9728 Searching destination: China
+INFO 2025-09-22 21:51:15,068 views 2664 9728 API Response Status: 200
+INFO 2025-09-22 21:51:15,069 views 2664 9728 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:21:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-0/Vct4pnHpYlDJlOg8z2duX3SIA"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2510068', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '33', 'X-RateLimit-requests-Reset': '2510068', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499983', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2510068', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'dcfd804f320a36f7f8ef59468875881ec27bbb22d7de508eb2ce8d9481b9d752'}
+INFO 2025-09-22 21:51:15,072 views 2664 9728 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558074778,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "region": "",
+      "city_name": "",
+      "cc1": "cn",
+      "roundtrip": "GhBkMmQyNzJmZDZjYzIwMTU0IAAoATICZW46BUNoaW5hQABKAFAA",
+      "city_ufi": null,
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+      "dest_type": "country",
+      "lat...
+INFO 2025-09-22 21:51:15,074 views 2664 9728 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:51:17,021 views 2664 15424 Searching destination: China
+INFO 2025-09-22 21:51:17,744 views 2664 9728 Hotels API Response Status: 200
+INFO 2025-09-22 21:51:17,750 views 2664 9728 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:51:17,762 basehttp 2664 9728 - Broken pipe from ('127.0.0.1', 60367)
+INFO 2025-09-22 21:51:18,100 views 2664 15424 API Response Status: 200
+INFO 2025-09-22 21:51:18,102 views 2664 15424 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:21:17 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-j/9J49sypA8spv6xcNItL6Yt51k"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2510065', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '32', 'X-RateLimit-requests-Reset': '2510065', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499982', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2510065', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'f90165045e4b261b34d006292ae50f3901784d4cfe7d9c80b9d4c860cfc568cd'}
+INFO 2025-09-22 21:51:18,105 views 2664 15424 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558077824,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "cc1": "cn",
+      "longitude": 103.85791,
+      "lc": "en",
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+      "country": "China",
+      "city_ufi": null,
+      "dest_type": "country",
+      "name": "China",
+      "roundtrip": "GhA5NTFmNzJ...
+INFO 2025-09-22 21:51:18,107 views 2664 15424 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:51:19,420 views 2664 15276 Searching destination: China
+INFO 2025-09-22 21:51:19,953 views 2664 15424 Hotels API Response Status: 200
+INFO 2025-09-22 21:51:19,959 views 2664 15424 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:51:19,969 basehttp 2664 15424 - Broken pipe from ('127.0.0.1', 64377)
+INFO 2025-09-22 21:51:20,786 views 2664 15276 API Response Status: 200
+INFO 2025-09-22 21:51:20,788 views 2664 15276 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:21:20 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-CgTtLqaWy9dsd0SI/q9OBiOBtww"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2510062', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '30', 'X-RateLimit-requests-Reset': '2510062', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499980', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2510062', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '87fdb8af08cd5da6a932599bcfe9141bb388428d9458ef9aa154ba41e9f6317c'}
+INFO 2025-09-22 21:51:20,793 views 2664 15276 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558080525,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "country": "China",
+      "longitude": 103.85791,
+      "label": "China",
+      "lc": "en",
+      "city_name": "",
+      "hotels": 21091,
+      "cc1": "cn",
+      "latitude": 36.560863,
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+      "re...
+INFO 2025-09-22 21:51:20,798 views 2664 15276 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:51:21,909 views 2664 12132 Searching destination: China
+INFO 2025-09-22 21:51:22,932 views 2664 15276 Hotels API Response Status: 200
+INFO 2025-09-22 21:51:22,940 views 2664 15276 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:51:22,949 basehttp 2664 15276 - Broken pipe from ('127.0.0.1', 64385)
+INFO 2025-09-22 21:51:23,105 views 2664 12132 API Response Status: 200
+INFO 2025-09-22 21:51:23,106 views 2664 12132 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:21:22 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2686', 'Connection': 'keep-alive', 'ETag': 'W/"a7e-eul4Vi9nAeaFvSpAHNcF53682S8"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2510060', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '28', 'X-RateLimit-requests-Reset': '2510060', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499978', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2510060', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '2a5394f87d1c827f6bdcfee573d2c3430c70b9c7448f1f8e9b68d59b25e6a66e'}
+INFO 2025-09-22 21:51:23,110 views 2664 12132 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558082833,
+  "data": [
+    {
+      "dest_id": "44",
+      "search_type": "country",
+      "dest_type": "country",
+      "image_url": "https://cf.bstatic.com/xdata/images/country/150x150/671.jpg?k=0e613650890be318fc921f1b6f97abc426c4fc1bd4678f54032d8bfef5954427&o=",
+      "region": "",
+      "city_ufi": null,
+      "country": "China",
+      "name": "China",
+      "lc": "en",
+      "nr_hotels": 21091,
+      "type": "co",
+      "city_na...
+INFO 2025-09-22 21:51:23,113 views 2664 12132 Searching hotels for dest_id: 44
+INFO 2025-09-22 21:51:25,474 views 2664 12132 Hotels API Response Status: 200
+INFO 2025-09-22 21:51:25,479 views 2664 12132 Successfully fetched 20 hotels from Booking.com
+INFO 2025-09-22 21:51:25,494 basehttp 2664 12132 "GET /hotels/ HTTP/1.1" 200 37255
+INFO 2025-09-22 21:54:29,497 basehttp 2664 12132 "GET /trip_planner/ HTTP/1.1" 200 10865
+INFO 2025-09-22 21:54:54,990 basehttp 2664 12132 "POST /trip_planner/ HTTP/1.1" 302 0
+INFO 2025-09-22 21:54:55,030 views 2664 12132 Searching destination: Goa
+INFO 2025-09-22 21:54:57,738 views 2664 12132 API Response Status: 200
+INFO 2025-09-22 21:54:57,740 views 2664 12132 API Response Headers: {'Date': 'Mon, 22 Sep 2025 16:24:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-M+YuCuXOy5Vqf8ADqvKDcv09+lc"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '2509845', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '25', 'X-RateLimit-requests-Reset': '2509845', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499975', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '2509845', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '2089fcd4f44751a901dd30a76307fd11898c8d57e96361d35d9d499b6307c77e'}
+INFO 2025-09-22 21:54:57,743 views 2664 12132 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1758558297402,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "city_ufi": null,
+      "type": "re",
+      "dest_type": "region",
+      "name": "Goa",
+      "nr_hotels": 4943,
+      "label": "Goa, India",
+      "roundtrip": "GhA3NDY1NzM2Y2EyOTYwMWE4IAAoATICZW46A0dvYUAASgBQAA==",
+      "latitude": 15.342337,
+      "cc1": "in",
+      "country": "India",
+      "region": "Goa",
+      "image_url": "https://cf.b...
+INFO 2025-09-22 21:54:57,746 views 2664 12132 Searching hotels for dest_id: 4127
+INFO 2025-09-22 21:55:06,387 views 2664 12132 Hotels API Response Status: 200
+WARNING 2025-09-22 21:55:06,388 views 2664 12132 Using mock hotel data as fallback
+INFO 2025-09-22 21:55:06,392 basehttp 2664 12132 "GET /hotels/ HTTP/1.1" 200 21255
+INFO 2025-10-03 12:27:08,565 autoreload 40716 40624 Watching for file changes with StatReloader
+INFO 2025-10-03 12:27:19,347 basehttp 40716 35084 "GET / HTTP/1.1" 200 1582
+WARNING 2025-10-03 12:27:20,682 log 40716 35084 Not Found: /favicon.ico
+WARNING 2025-10-03 12:27:20,687 basehttp 40716 35084 "GET /favicon.ico HTTP/1.1" 404 4164
+INFO 2025-10-03 12:27:24,051 basehttp 40716 35084 "POST / HTTP/1.1" 302 0
+INFO 2025-10-03 12:27:24,079 basehttp 40716 35084 "GET /home/ HTTP/1.1" 200 6693
+INFO 2025-10-03 12:27:45,740 basehttp 40716 35084 "GET /trip_planner/ HTTP/1.1" 200 10865
+INFO 2025-10-03 12:28:22,928 basehttp 40716 35084 "POST /trip_planner/ HTTP/1.1" 302 0
+INFO 2025-10-03 12:28:22,948 views 40716 35084 Searching destination: Karnataka
+INFO 2025-10-03 12:28:24,263 views 40716 35084 API Response Status: 200
+INFO 2025-10-03 12:28:24,263 views 40716 35084 API Response Headers: {'Date': 'Fri, 03 Oct 2025 06:58:21 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2521', 'Connection': 'keep-alive', 'ETag': 'W/"9d9-MvQo3F0gHzDqKH3eHEwAtBqFs+I"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1593441', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '23', 'X-RateLimit-requests-Reset': '1593441', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499973', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1593441', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'e7865d08f2ad1f58318e3e76ae682d2845eee04ac0f1bfc292e3b5a5b6922ee0'}
+INFO 2025-10-03 12:28:24,263 views 40716 35084 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759474700928,
+  "data": [
+    {
+      "dest_id": "3486",
+      "search_type": "region",
+      "name": "Karnataka",
+      "region": "Karnataka",
+      "lc": "en",
+      "type": "re",
+      "hotels": 7782,
+      "city_name": "",
+      "latitude": 14.634765,
+      "city_ufi": null,
+      "cc1": "in",
+      "longitude": 76.136635,
+      "nr_hotels": 7782,
+      "dest_type": "region",
+      "country": "India",
+      "roundtrip": "GhBiNWRmMzE...
+INFO 2025-10-03 12:28:24,263 views 40716 35084 Searching hotels for dest_id: 3486
+INFO 2025-10-03 12:28:26,278 views 40716 35084 Hotels API Response Status: 200
+INFO 2025-10-03 12:28:26,280 views 40716 35084 Successfully fetched 20 hotels from Booking.com
+INFO 2025-10-03 12:28:26,323 basehttp 40716 35084 "GET /hotels/ HTTP/1.1" 200 37716
+INFO 2025-10-03 12:28:56,025 views 40716 35084 Searching destination: Karnataka
+INFO 2025-10-03 12:28:57,503 views 40716 35084 API Response Status: 200
+INFO 2025-10-03 12:28:57,504 views 40716 35084 API Response Headers: {'Date': 'Fri, 03 Oct 2025 06:58:54 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2521', 'Connection': 'keep-alive', 'ETag': 'W/"9d9-wHPVZWeYHahKBS+iMa1uwJF3W8Q"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1593408', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '21', 'X-RateLimit-requests-Reset': '1593408', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499971', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1593408', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'b77a02f89d997a3fb27258d19827ec974710330418b83abff3f40b6fff5daa89'}
+INFO 2025-10-03 12:28:57,505 views 40716 35084 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759474734166,
+  "data": [
+    {
+      "dest_id": "3486",
+      "search_type": "region",
+      "city_ufi": null,
+      "longitude": 76.136635,
+      "region": "Karnataka",
+      "name": "Karnataka",
+      "type": "re",
+      "dest_type": "region",
+      "hotels": 7782,
+      "cc1": "in",
+      "latitude": 14.634765,
+      "image_url": "https://cf.bstatic.com/xdata/images/region/150x150/68071.jpg?k=6288182ba0f8a7aaeefd1674d29ecc2fa8282c33...
+INFO 2025-10-03 12:28:57,507 views 40716 35084 Searching hotels for dest_id: 3486
+INFO 2025-10-03 12:28:59,586 views 40716 35084 Hotels API Response Status: 200
+INFO 2025-10-03 12:28:59,588 views 40716 35084 Successfully fetched 20 hotels from Booking.com
+INFO 2025-10-03 12:28:59,593 basehttp 40716 35084 "POST /hotels/ HTTP/1.1" 200 37716
+INFO 2025-10-03 12:29:12,282 views 40716 35084 Searching destination: Karnataka
+INFO 2025-10-03 12:29:13,517 views 40716 35084 API Response Status: 200
+INFO 2025-10-03 12:29:13,517 views 40716 35084 API Response Headers: {'Date': 'Fri, 03 Oct 2025 06:59:10 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2521', 'Connection': 'keep-alive', 'ETag': 'W/"9d9-LvpVXs17Tkc/oz5V5E/BHYuEjSo"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1593392', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '19', 'X-RateLimit-requests-Reset': '1593392', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499969', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1593392', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'c6fa224fa891a9d011074ea15d4670dc44cf87bfd7957f697ae9106553957cd1'}
+INFO 2025-10-03 12:29:13,522 views 40716 35084 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759474750168,
+  "data": [
+    {
+      "dest_id": "3486",
+      "search_type": "region",
+      "latitude": 14.634765,
+      "country": "India",
+      "type": "re",
+      "dest_type": "region",
+      "city_ufi": null,
+      "lc": "en",
+      "region": "Karnataka",
+      "label": "Karnataka, India",
+      "cc1": "in",
+      "name": "Karnataka",
+      "longitude": 76.136635,
+      "roundtrip": "GhA3MDM4MzExZTgwZTYwMDZiIAAoATICZW46CUthcm5hdG...
+INFO 2025-10-03 12:29:13,523 views 40716 35084 Searching hotels for dest_id: 3486
+INFO 2025-10-03 12:29:15,445 views 40716 35084 Hotels API Response Status: 200
+INFO 2025-10-03 12:29:15,451 views 40716 35084 Successfully fetched 20 hotels from Booking.com
+INFO 2025-10-03 12:29:15,459 basehttp 40716 35084 "POST /hotels/ HTTP/1.1" 200 37716
+INFO 2025-10-03 12:29:25,589 views 40716 35084 Searching destination: Karnataka
+INFO 2025-10-03 12:29:26,868 views 40716 35084 API Response Status: 200
+INFO 2025-10-03 12:29:26,868 views 40716 35084 API Response Headers: {'Date': 'Fri, 03 Oct 2025 06:59:23 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2521', 'Connection': 'keep-alive', 'ETag': 'W/"9d9-U7O2GUaPs50qnezGyAv5U/Gi2ME"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1593379', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '17', 'X-RateLimit-requests-Reset': '1593379', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499967', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1593379', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '9c010f625bde5904219b5bee430cadc8ede76540e33806ed2233ef927295f569'}
+INFO 2025-10-03 12:29:26,870 views 40716 35084 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759474763536,
+  "data": [
+    {
+      "dest_id": "3486",
+      "search_type": "region",
+      "type": "re",
+      "country": "India",
+      "label": "Karnataka, India",
+      "roundtrip": "GhBiNjc2MzEyNWNlOGIwMzMzIAAoATICZW46CUthcm5hdGFrYUAASgBQAA==",
+      "name": "Karnataka",
+      "city_ufi": null,
+      "hotels": 7782,
+      "region": "Karnataka",
+      "nr_hotels": 7782,
+      "cc1": "in",
+      "lc": "en",
+      "longitude": 76.13...
+INFO 2025-10-03 12:29:26,874 views 40716 35084 Searching hotels for dest_id: 3486
+INFO 2025-10-03 12:29:28,737 basehttp 40716 42184 "GET /places/ HTTP/1.1" 200 21963
+INFO 2025-10-03 12:29:29,867 views 40716 35084 Hotels API Response Status: 200
+INFO 2025-10-03 12:29:29,874 views 40716 35084 Successfully fetched 20 hotels from Booking.com
+INFO 2025-10-03 12:29:29,874 basehttp 40716 35084 - Broken pipe from ('127.0.0.1', 61917)
+INFO 2025-10-03 13:17:25,675 autoreload 52352 53176 Watching for file changes with StatReloader
+INFO 2025-10-03 13:17:32,252 basehttp 52352 33940 "GET / HTTP/1.1" 200 1753
+INFO 2025-10-03 13:17:54,168 basehttp 52352 40424 "GET / HTTP/1.1" 200 1582
+WARNING 2025-10-03 13:18:01,718 log 52352 40424 Not Found: /favicon.ico
+WARNING 2025-10-03 13:18:01,734 basehttp 52352 40424 "GET /favicon.ico HTTP/1.1" 404 4164
+INFO 2025-10-03 13:18:20,885 basehttp 52352 40424 "POST / HTTP/1.1" 302 0
+INFO 2025-10-03 13:18:20,894 basehttp 52352 40424 "GET / HTTP/1.1" 200 1760
+INFO 2025-10-03 13:18:35,807 basehttp 52352 57204 "GET / HTTP/1.1" 200 1582
+WARNING 2025-10-03 13:18:36,695 log 52352 57204 Not Found: /favicon.ico
+WARNING 2025-10-03 13:18:36,697 basehttp 52352 57204 "GET /favicon.ico HTTP/1.1" 404 4164
+INFO 2025-10-03 13:18:40,653 basehttp 52352 57204 "POST / HTTP/1.1" 302 0
+INFO 2025-10-03 13:18:40,680 basehttp 52352 57204 "GET /home/ HTTP/1.1" 200 6693
+INFO 2025-10-03 13:18:46,326 basehttp 52352 57204 "GET /trip_planner/ HTTP/1.1" 200 10865
+INFO 2025-10-03 13:19:09,163 basehttp 52352 57204 "POST /trip_planner/ HTTP/1.1" 302 0
+INFO 2025-10-03 13:19:09,180 views 52352 57204 Searching destination: Goa
+INFO 2025-10-03 13:19:10,523 views 52352 57204 API Response Status: 200
+INFO 2025-10-03 13:19:10,525 views 52352 57204 API Response Headers: {'Date': 'Fri, 03 Oct 2025 07:49:07 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-xuqWAs+HvCKQvs+WGku6ojDmbxk"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1590395', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '15', 'X-RateLimit-requests-Reset': '1590395', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499965', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1590395', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '46de8f41d94de98f750d0f7a07058295e7497b7decd6947c2f52e4442c9095aa'}
+INFO 2025-10-03 13:19:10,525 views 52352 57204 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759477747171,
+  "data": [
+    {
+      "dest_id": "-118400",
+      "search_type": "city",
+      "cc1": "it",
+      "label": "Genova, Liguria, Italy",
+      "city_ufi": null,
+      "name": "Genova",
+      "city_name": "Genova",
+      "region": "Liguria",
+      "country": "Italy",
+      "latitude": 44.40718,
+      "nr_hotels": 2701,
+      "lc": "en",
+      "dest_type": "city",
+      "image_url": "https://cf.bstatic.com/xdata/images/city/15...
+INFO 2025-10-03 13:19:10,527 views 52352 57204 Searching hotels for dest_id: -118400
+INFO 2025-10-03 13:19:11,653 views 52352 57204 Hotels API Response Status: 200
+WARNING 2025-10-03 13:19:11,655 views 52352 57204 Using mock hotel data as fallback
+INFO 2025-10-03 13:19:11,667 basehttp 52352 57204 "GET /hotels/ HTTP/1.1" 200 21259
+INFO 2025-10-03 13:19:38,504 views 52352 57204 Searching destination: Goa
+INFO 2025-10-03 13:19:40,031 views 52352 57204 API Response Status: 200
+INFO 2025-10-03 13:19:40,071 views 52352 57204 API Response Headers: {'Date': 'Fri, 03 Oct 2025 07:49:36 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-MVxawnqsYxnJSC0ZZNad/o49RiE"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1590366', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '13', 'X-RateLimit-requests-Reset': '1590366', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499963', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1590366', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '4145a057dec25bcc082a46efbaccde5ef59fab411d7073d31d2cb8d9ebe8cd6f'}
+INFO 2025-10-03 13:19:40,258 views 52352 57204 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759477776644,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "roundtrip": "GhA2NGE2MzcwODVmOTAwMDEwIAAoATICZW46A0dvYUAASgBQAA==",
+      "name": "Goa",
+      "nr_hotels": 4943,
+      "country": "India",
+      "image_url": "https://cf.bstatic.com/xdata/images/region/150x150/49645.jpg?k=d3e59eb284ec9e49316c366bfc4e5a85d0ba7a2504bed7c9704e6944045f2dbd&o=",
+      "type": "re",
+      "longitude": 74.00137,
+   ...
+INFO 2025-10-03 13:19:40,314 views 52352 57204 Searching hotels for dest_id: 4127
+INFO 2025-10-03 13:19:41,713 views 52352 57204 Hotels API Response Status: 200
+WARNING 2025-10-03 13:19:41,743 views 52352 57204 Using mock hotel data as fallback
+INFO 2025-10-03 13:19:41,791 basehttp 52352 57204 "POST /hotels/ HTTP/1.1" 200 21259
+INFO 2025-10-03 13:19:45,139 basehttp 52352 57204 "GET /places/ HTTP/1.1" 200 12585
+INFO 2025-10-03 15:07:55,958 autoreload 2292 8028 Watching for file changes with StatReloader
+INFO 2025-10-03 15:11:58,048 basehttp 2292 17612 "GET / HTTP/1.1" 200 1582
+WARNING 2025-10-03 15:11:58,386 log 2292 17612 Not Found: /favicon.ico
+WARNING 2025-10-03 15:11:58,387 basehttp 2292 17612 "GET /favicon.ico HTTP/1.1" 404 4164
+INFO 2025-10-03 15:12:01,311 basehttp 2292 17612 "POST / HTTP/1.1" 302 0
+INFO 2025-10-03 15:12:01,323 basehttp 2292 17612 "GET /home/ HTTP/1.1" 200 6693
+INFO 2025-10-03 15:12:03,715 basehttp 2292 17612 "GET /trip_planner/ HTTP/1.1" 200 10865
+INFO 2025-10-03 15:12:22,659 basehttp 2292 17612 "POST /trip_planner/ HTTP/1.1" 302 0
+INFO 2025-10-03 15:12:22,672 views 2292 17612 Searching destination: Goa
+INFO 2025-10-03 15:12:23,672 views 2292 17612 API Response Status: 200
+INFO 2025-10-03 15:12:23,673 views 2292 17612 API Response Headers: {'Date': 'Fri, 03 Oct 2025 09:42:20 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-Xd0hF6i87I4hdMCGcjZAy3yFtVM"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1583602', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '11', 'X-RateLimit-requests-Reset': '1583602', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499961', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1583602', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '2534cd14b972f8940ddc76d11d3cec7c5f3bae43e59ac0bbf1c9b23a1c067403'}
+INFO 2025-10-03 15:12:23,674 views 2292 17612 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759484540803,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "latitude": 15.342337,
+      "city_ufi": null,
+      "label": "Goa, India",
+      "dest_type": "region",
+      "image_url": "https://cf.bstatic.com/xdata/images/region/150x150/49645.jpg?k=d3e59eb284ec9e49316c366bfc4e5a85d0ba7a2504bed7c9704e6944045f2dbd&o=",
+      "region": "Goa",
+      "name": "Goa",
+      "city_name": "",
+      "roundtrip": "G...
+INFO 2025-10-03 15:12:23,674 views 2292 17612 Searching hotels for dest_id: 4127
+INFO 2025-10-03 15:12:25,015 views 2292 17612 Hotels API Response Status: 200
+WARNING 2025-10-03 15:12:25,015 views 2292 17612 Using mock hotel data as fallback
+INFO 2025-10-03 15:12:25,065 basehttp 2292 17612 "GET /hotels/ HTTP/1.1" 200 21253
+INFO 2025-10-03 15:12:29,112 views 2292 17612 Searching destination: Goa
+INFO 2025-10-03 15:12:30,591 views 2292 17612 API Response Status: 200
+INFO 2025-10-03 15:12:30,592 views 2292 17612 API Response Headers: {'Date': 'Fri, 03 Oct 2025 09:42:27 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-yFFhFEinwtzhZ4iIh7LnYCndxOo"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1583595', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '9', 'X-RateLimit-requests-Reset': '1583595', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499959', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1583595', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '97954914e8e937deb976f3d58095c893e8a315d60f9df2d89a4da8c9e25e036e'}
+INFO 2025-10-03 15:12:30,594 views 2292 17612 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759484547728,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "label": "Goa, India",
+      "name": "Goa",
+      "roundtrip": "GhA0YzM2NDQ0MTE2YzgwMDRjIAAoATICZW46A0dvYUAASgBQAA==",
+      "region": "Goa",
+      "type": "re",
+      "nr_hotels": 4943,
+      "dest_type": "region",
+      "country": "India",
+      "cc1": "in",
+      "city_name": "",
+      "latitude": 15.342337,
+      "lc": "en",
+      "image_ur...
+INFO 2025-10-03 15:12:30,594 views 2292 17612 Searching hotels for dest_id: 4127
+INFO 2025-10-03 15:12:31,656 views 2292 17612 Hotels API Response Status: 200
+WARNING 2025-10-03 15:12:31,657 views 2292 17612 Using mock hotel data as fallback
+INFO 2025-10-03 15:12:31,659 basehttp 2292 17612 "POST /hotels/ HTTP/1.1" 200 21253
+INFO 2025-10-03 15:12:35,063 views 2292 17612 Searching destination: Goa
+INFO 2025-10-03 15:12:36,539 views 2292 17612 API Response Status: 200
+INFO 2025-10-03 15:12:36,539 views 2292 17612 API Response Headers: {'Date': 'Fri, 03 Oct 2025 09:42:33 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-jNvurXu9jaQ/M1+aFhmHSqM6ZSM"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1583589', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '7', 'X-RateLimit-requests-Reset': '1583589', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499957', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1583589', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '05b753491a37f4a0f073eabd2395ba4b9d5aa644b51d2ff051f82d7f2e2531c7'}
+INFO 2025-10-03 15:12:36,552 views 2292 17612 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759484553687,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "city_name": "",
+      "country": "India",
+      "lc": "en",
+      "image_url": "https://cf.bstatic.com/xdata/images/region/150x150/49645.jpg?k=d3e59eb284ec9e49316c366bfc4e5a85d0ba7a2504bed7c9704e6944045f2dbd&o=",
+      "type": "re",
+      "roundtrip": "GhA4YzFkNDQ0NGI2MDQwMDg3IAAoATICZW46A0dvYUAASgBQAA==",
+      "latitude": 15.342337,
+      "h...
+INFO 2025-10-03 15:12:36,555 views 2292 17612 Searching hotels for dest_id: 4127
+INFO 2025-10-03 15:12:37,690 views 2292 17612 Hotels API Response Status: 200
+WARNING 2025-10-03 15:12:37,691 views 2292 17612 Using mock hotel data as fallback
+INFO 2025-10-03 15:12:37,695 basehttp 2292 17612 "POST /hotels/ HTTP/1.1" 200 21253
+INFO 2025-10-03 15:12:41,038 views 2292 17612 Searching destination: Goa
+INFO 2025-10-03 15:12:41,993 views 2292 17612 API Response Status: 200
+INFO 2025-10-03 15:12:41,993 views 2292 17612 API Response Headers: {'Date': 'Fri, 03 Oct 2025 09:42:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-arnrfYd90LGcfkP2dhhUCyiQP3U"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1583583', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '5', 'X-RateLimit-requests-Reset': '1583583', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499955', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1583583', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': '518ecc2f838510e1e3c6da4ebbd494ea69d35c249459376a3cd034626e1dad8f'}
+INFO 2025-10-03 15:12:41,993 views 2292 17612 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759484559147,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "country": "India",
+      "lc": "en",
+      "roundtrip": "GhA3OWY3NDQ0N2YwYmUwMGFlIAAoATICZW46A0dvYUAASgBQAA==",
+      "cc1": "in",
+      "longitude": 74.00137,
+      "label": "Goa, India",
+      "city_ufi": null,
+      "image_url": "https://cf.bstatic.com/xdata/images/region/150x150/49645.jpg?k=d3e59eb284ec9e49316c366bfc4e5a85d0ba7a2504bed7c97...
+INFO 2025-10-03 15:12:42,009 views 2292 17612 Searching hotels for dest_id: 4127
+INFO 2025-10-03 15:12:43,196 views 2292 17612 Hotels API Response Status: 200
+WARNING 2025-10-03 15:12:43,196 views 2292 17612 Using mock hotel data as fallback
+INFO 2025-10-03 15:12:43,196 basehttp 2292 17612 "POST /hotels/ HTTP/1.1" 200 21253
+INFO 2025-10-03 15:12:45,761 views 2292 17612 Searching destination: Goa
+INFO 2025-10-03 15:12:46,938 views 2292 17612 API Response Status: 200
+INFO 2025-10-03 15:12:46,938 views 2292 17612 API Response Headers: {'Date': 'Fri, 03 Oct 2025 09:42:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2580', 'Connection': 'keep-alive', 'ETag': 'W/"a14-Y8sOsTufwis4LVkP0EFmnjrUKhw"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1583578', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '3', 'X-RateLimit-requests-Reset': '1583578', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499953', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1583578', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'c1d3d6847df544e9c192b901d42baab65d756fcb453611cf9882fd47210cdafe'}
+INFO 2025-10-03 15:12:46,938 views 2292 17612 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759484564070,
+  "data": [
+    {
+      "dest_id": "4127",
+      "search_type": "region",
+      "type": "re",
+      "name": "Goa",
+      "image_url": "https://cf.bstatic.com/xdata/images/region/150x150/49645.jpg?k=d3e59eb284ec9e49316c366bfc4e5a85d0ba7a2504bed7c9704e6944045f2dbd&o=",
+      "hotels": 4943,
+      "nr_hotels": 4943,
+      "city_name": "",
+      "roundtrip": "GhA3YWQ4NDQ0OTZjMjIwMzU2IAAoATICZW46A0dvYUAASgBQAA==",
+      "cc1": ...
+INFO 2025-10-03 15:12:46,938 views 2292 17612 Searching hotels for dest_id: 4127
+INFO 2025-10-03 15:12:48,350 views 2292 17612 Hotels API Response Status: 200
+WARNING 2025-10-03 15:12:48,356 views 2292 17612 Using mock hotel data as fallback
+INFO 2025-10-03 15:12:48,366 basehttp 2292 17612 "POST /hotels/ HTTP/1.1" 200 21253
+WARNING 2025-10-03 15:12:48,397 views 2292 17612 Using mock places data for Goa
+INFO 2025-10-03 15:12:48,397 basehttp 2292 17612 "GET /places/ HTTP/1.1" 200 14421
+WARNING 2025-10-03 15:27:30,114 views 2292 1160 Using mock places data for Goa
+INFO 2025-10-03 15:27:30,120 basehttp 2292 1160 "GET /places/ HTTP/1.1" 200 13461
+INFO 2025-10-03 15:27:46,836 basehttp 2292 1160 "GET /trip_planner/ HTTP/1.1" 200 10865
+INFO 2025-10-03 15:28:08,413 basehttp 2292 1160 "POST /trip_planner/ HTTP/1.1" 302 0
+INFO 2025-10-03 15:28:08,414 views 2292 1160 Searching destination: Kashmir
+INFO 2025-10-03 15:28:09,544 views 2292 1160 API Response Status: 200
+INFO 2025-10-03 15:28:09,545 views 2292 1160 API Response Headers: {'Date': 'Fri, 03 Oct 2025 09:58:06 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2699', 'Connection': 'keep-alive', 'ETag': 'W/"a8b-FrRb054XMsxAjX2vfqiPdzFINS4"', 'X-Powered-By': 'Express', 'X-RateLimit-Premium-Limit': '100', 'X-RateLimit-Premium-Remaining': '100', 'X-RateLimit-Premium-Reset': '1582656', 'X-RateLimit-requests-Limit': '50', 'X-RateLimit-requests-Remaining': '1', 'X-RateLimit-requests-Reset': '1582656', 'X-RateLimit-rapid-free-plans-hard-limit-Limit': '500000', 'X-RateLimit-rapid-free-plans-hard-limit-Remaining': '499951', 'X-RateLimit-rapid-free-plans-hard-limit-Reset': '1582656', 'Server': 'RapidAPI-1.2.8', 'X-RapidAPI-Version': '1.2.8', 'X-RapidAPI-Region': 'AWS - ap-southeast-1', 'X-RapidAPI-Request-Id': 'fe113d054c576300cba4449050fd255192dbeef64ee7fbf685cb37b7a18e081d'}
+INFO 2025-10-03 15:28:09,545 views 2292 1160 API Response Data: {
+  "status": true,
+  "message": "Success",
+  "timestamp": 1759485486682,
+  "data": [
+    {
+      "dest_id": "11117490",
+      "search_type": "hotel",
+      "city_name": "Golubac",
+      "dest_type": "hotel",
+      "country": "Serbia",
+      "roundtrip": "GhA4NjY0NDYxN2FlZWUwMWU4IAAoATICZW46B0thc2htaXJAAEoAUAA=",
+      "nr_hotels": 1,
+      "image_url": "https://cf.bstatic.com/xdata/images/hotel/150x150/508210480.jpg?k=427909dff7d6e95f2c98758da4f269586615dde26bac7af3a0588abd656d58b7&o=",
+      "...
+INFO 2025-10-03 15:28:09,546 views 2292 1160 Searching hotels for dest_id: 11117490
+INFO 2025-10-03 15:28:10,673 views 2292 1160 Hotels API Response Status: 200
+WARNING 2025-10-03 15:28:10,673 views 2292 1160 Using mock hotel data as fallback
+INFO 2025-10-03 15:28:10,685 basehttp 2292 1160 "GET /hotels/ HTTP/1.1" 200 21282

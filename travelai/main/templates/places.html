@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places to Visit - Trip Planner</title>
+    <style>
+        /* ====== Styles from your previous HTML ====== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .navbar { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 15px 0; margin-bottom: 30px; border-radius: 15px; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 24px; font-weight: bold; color: white; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; padding: 8px 16px; border-radius: 25px; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { background: rgba(255, 255, 255, 0.2); }
+        .page-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 30px; margin-bottom: 30px; text-align: center; }
+        .hotel-info { background: rgba(102, 126, 234, 0.1); padding: 15px 25px; border-radius: 15px; display: inline-block; margin-top: 15px; }
+        .content-layout { display: grid; grid-template-columns: 1fr 400px; gap: 30px; }
+        .places-section { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 30px; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .category-filters { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 16px; border: 2px solid #667eea; background: transparent; color: #667eea; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; font-size: 14px; }
+        .filter-btn:hover, .filter-btn.active { background: #667eea; color: white; }
+        .places-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .place-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .place-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .place-image { height: 150px; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; position: relative; }
+        .place-content { padding: 20px; }
+        .place-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 8px; color: #333; }
+        .place-category { background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 4px 10px; border-radius: 12px; font-size: 12px; display: inline-block; margin-bottom: 10px; }
+        .place-description { color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.4; }
+        .place-details { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 14px; color: #666; }
+        .place-rating { display: flex; align-items: center; gap: 5px; }
+        .add-btn { width: 100%; background: transparent; color: #667eea; border: 2px solid #667eea; padding: 10px; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; }
+        .add-btn:hover { background: #667eea; color: white; }
+        .add-btn.added { background: #4CAF50; border-color: #4CAF50; color: white; }
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        .map-container { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 25px; height: 300px; }
+        .map-placeholder { width: 100%; height: 100%; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-size: 48px; }
+        .itinerary-container { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 25px; flex-grow: 1; }
+        .itinerary-list { max-height: 400px; overflow-y: auto; }
+        .itinerary-item { background: rgba(102, 126, 234, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .itinerary-name { font-weight: 600; color: #333; }
+        .remove-btn { background: #ff4757; color: white; border: none; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; }
+        .continue-btn { width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px; border-radius: 25px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 20px; }
+        .continue-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
+        .continue-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        @media (max-width: 1024px) { .content-layout { grid-template-columns: 1fr; } .sidebar { order: -1; } .nav-links { flex-direction: column; gap: 10px; } }
+        @media (max-width: 768px) { .category-filters { justify-content: center; } .places-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-content">
+            <div class="logo">🌍 TripPlanner</div>
+            <div class="nav-links">
+                <a href="{% url 'trip_planner' %}">Plan Trip</a>
+                <a href="{% url 'places' %}" class="active">Places</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>🗺️ Discover Amazing Places</h1>
+            <p>Explore top attractions and hidden gems near your destination</p>
+        </div>
+
+        <div class="content-layout">
+            <div class="places-section">
+                <div class="section-header">
+                    <h2>Places to Visit in {{ destination }}</h2>
+                    <div class="places-count" id="placesCount">{{ total_places }} attractions found</div>
+                </div>
+
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="landmarks">🏛️ Landmarks</button>
+                    <button class="filter-btn" data-category="museums">🎨 Museums</button>
+                    <button class="filter-btn" data-category="parks">🌳 Parks</button>
+                    <button class="filter-btn" data-category="shopping">🛍️ Shopping</button>
+                    <button class="filter-btn" data-category="food">🍽️ Food</button>
+                    <button class="filter-btn" data-category="entertainment">🎭 Entertainment</button>
+                </div>
+
+                <div class="places-grid" id="placesGrid"></div>
+            </div>
+
+            <div class="sidebar">
+                <div class="map-container">
+                    <h3 style="margin-bottom: 15px;">📍 Map View</h3>
+                    <div class="map-placeholder">🗺️<div style="font-size:16px; margin-top:10px;">Interactive Map</div></div>
+                </div>
+
+                <div class="itinerary-container">
+                    <h3 style="margin-bottom: 15px;">📋 My Itinerary</h3>
+                    <div class="itinerary-list" id="itineraryList">
+                        <div style="text-align:center; color:#666; padding:20px;">Add places to your itinerary to get started!</div>
+                    </div>
+                    <button class="continue-btn" id="continueBtn" onclick="proceedToExpenses()" disabled>Continue to Expense Estimation →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get trip data from Django context
+        const tripData = {
+            destination: "{{ destination|escapejs }}",
+            checkin_date: "{{ checkin_date|escapejs }}",
+            checkout_date: "{{ checkout_date|escapejs }}"
+        };
+
+        // Places data from Django
+        const placesData = {{ places_data|safe}};
+        
+        let selectedPlaces = [];
+        let currentFilter = 'all';
+
+        function displayPlaces(places) {
+            const placesGrid = document.getElementById('placesGrid');
+            placesGrid.innerHTML = '';
+            places.forEach(place => {
+                const isAdded = selectedPlaces.some(p => p.id === place.id);
+                const placeCard = document.createElement('div');
+                placeCard.className = 'place-card';
+                placeCard.innerHTML = `
+                    <div class="place-image">${place.image || '📍'}</div>
+                    <div class="place-content">
+                        <div class="place-name">${place.name}</div>
+                        <div class="place-category">${place.category}</div>
+                        <div class="place-description">${place.description}</div>
+                        <div class="place-details">
+                            <div class="place-rating">⭐ ${place.rating}</div>
+                            <div>🕒 ${place.duration}</div>
+                            <div>💰 ${place.price}</div>
+                        </div>
+                        <button class="add-btn ${isAdded ? 'added' : ''}" onclick="togglePlace(${place.id})">${isAdded ? '✓ Added' : '+ Add to Itinerary'}</button>
+                    </div>`;
+                placesGrid.appendChild(placeCard);
+            });
+            document.getElementById('placesCount').textContent = `${places.length} attractions found`;
+        }
+
+        function togglePlace(id) {
+            const place = placesData.find(p=>p.id===id);
+            const idx = selectedPlaces.findIndex(p=>p.id===id);
+            if(idx>-1){selectedPlaces.splice(idx,1);}else{selectedPlaces.push(place);}
+            updateItinerary();
+            displayPlaces(getFilteredPlaces());
+        }
+
+        function updateItinerary() {
+            const list = document.getElementById('itineraryList');
+            const btn = document.getElementById('continueBtn');
+            if(selectedPlaces.length===0){
+                list.innerHTML=`<div style="text-align:center; color:#666; padding:20px;">Add places to your itinerary to get started!</div>`;
+                btn.disabled=true;
+            }else{
+                list.innerHTML = selectedPlaces.map(p=>`<div class="itinerary-item"><div class="itinerary-name">${p.name}</div><button class="remove-btn" onclick="togglePlace(${p.id})">×</button></div>`).join('');
+                btn.disabled=false;
+            }
+        }
+
+        function getFilteredPlaces(){
+            if(currentFilter==='all'){return placesData;}
+            return placesData.filter(p=>p.category===currentFilter);
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn=>{
+            btn.addEventListener('click',function(){
+                document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter=this.dataset.category;
+                displayPlaces(getFilteredPlaces());
+            });
+        });
+
+        function proceedToExpenses(){
+            sessionStorage.setItem('selectedPlaces',JSON.stringify(selectedPlaces));
+            window.location.href="{% url 'expenses' %}";
+        }
+
+        displayPlaces(placesData);
+        updateItinerary();
+    </script>
+</body>
+</html>

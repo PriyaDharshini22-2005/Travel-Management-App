@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - TravelAI Pro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                        success: '#28a745',
+                        danger: '#dc3545',
+                        warning: '#ffc107',
+                        info: '#17a2b8',
+                        light: '#f8f9fa',
+                        dark: '#343a40',
+                        white: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary to-secondary">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-blur-lg py-4 shadow-lg">
+        <div class="container mx-auto px-5">
+            <div class="flex justify-between items-center">
+                <a href="{%url 'home'%}" class="text-2xl font-bold text-primary">
+                    <i class="fas fa-globe mr-2"></i> TravelAI Pro
+                </a>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="{% url 'home' %}" class="text-dark font-medium hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="{% url 'plan-trip' %}" class="text-dark font-medium hover:text-primary transition-colors">Plan Trip</a></li>
+                    <li><a href="{% url 'about' %}" class="text-primary font-medium hover:text-primary transition-colors">About</a></li>
+                    <li><a href="{% url 'contact' %}" class="text-dark font-medium hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+                <div class="flex space-x-4">
+                    <!-- Add login/register buttons here if needed -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 min-h-screen">
+        <!-- About Page Content -->
+        <div class="container mx-auto px-5 py-16">
+            <div class="max-w-4xl mx-auto">
+                <!-- Hero Section -->
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">About TravelAI Pro</h1>
+                    <p class="text-xl text-white opacity-90">Revolutionizing travel planning with artificial intelligence</p>
+                </div>
+
+                <!-- Mission Section -->
+                <div class="bg-white bg-opacity-95 backdrop-blur-lg rounded-3xl p-8 md:p-12 mb-12 shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-rocket text-4xl text-primary mr-4"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Our Mission</h2>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        At TravelAI Pro, we believe that extraordinary travel experiences shouldn't require hours of research and planning. Our mission is to democratize travel planning by making it intelligent, personalized, and effortless. We harness the power of artificial intelligence to transform how people discover, plan, and experience the world.
+                    </p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-lightbulb text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Innovation First</h3>
+                        <p class="text-gray-600">We continuously push the boundaries of what's possible in travel technology, integrating the latest AI advancements to serve you better.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-heart text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Personalized Experience</h3>
+                        <p class="text-gray-600">Every traveler is unique. Our AI learns your preferences to create deeply personalized recommendations and itineraries.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-globe-americas text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Global Coverage</h3>
+                        <p class="text-gray-600">From bustling metropolises to hidden villages, our platform covers destinations worldwide with local insights and real-time data.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-shield-alt text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Trust & Security</h3>
+                        <p class="text-gray-600">Your privacy and security are paramount. We use industry-leading encryption and never share your personal data.</p>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 md:p-12 text-white mb-12">
+                    <h2 class="text-3xl font-bold text-center mb-8">Our Impact</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold mb-2">50K+</div>
+                            <div class="text-sm opacity-90">Trips Planned</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold mb-2">195</div>
+                            <div class="text-sm opacity-90">Countries Covered</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold mb-2">98%</div>
+                            <div class="text-sm opacity-90">Satisfaction Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold mb-2">24/7</div>
+                            <div class="text-sm opacity-90">AI Support</div>
+                        </div>
+                    </div>
+                </div>
+
+               
+        
+                <!-- Call to Action -->
+                <div class="text-center">
+                    <div class="bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Ready to Start Your Journey?</h3>
+                        <p class="text-gray-600 mb-6">Join thousands of travelers who trust TravelAI Pro to create their perfect trips</p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <a href="{% url 'plan-trip' %}" class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center">
+                                <i class="fas fa-route mr-2"></i> Start Planning Now
+                            </a>
+                            <a href="{% url 'contact' %}" class="px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all flex items-center justify-center">
+                                <i class="fas fa-envelope mr-2"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

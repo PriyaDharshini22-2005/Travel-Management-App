@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - TravelExplorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            animation: slideInFromTop 0.8s ease-out;
+        }
+
+        @keyframes slideInFromTop {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:nth-child(odd) {
+            animation: slideInFromLeft 0.8s ease-out;
+        }
+
+        .section:nth-child(even) {
+            animation: slideInFromRight 0.8s ease-out;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #ffa726, #ff7043);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 20px rgba(255, 167, 38, 0.3);
+        }
+
+        .trip-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .trip-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .trip-destination {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .trip-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .preferences-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: scale(1.05);
+        }
+
+        .checkbox-item input {
+            margin-right: 8px;
+        }
+
+        .range-slider {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            outline: none;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .range-value {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .preferences-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-stats {
+                justify-content: center;
+            }
+        }
+
+        .floating-action {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-action:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="header">
+            <div class="profile-avatar" onclick="editAvatar()">
+                JD
+            </div>
+            <div class="profile-info">
+                <h1>John Doe</h1>
+                <p style="color: #666; font-size: 1.1rem;">Travel Enthusiast & Adventure Seeker</p>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Countries Visited</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">28</div>
+                        <div class="stat-label">Cities Explored</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Saved Trips</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Personal Information -->
+            <div class="section">
+                <h2><span class="icon">👤</span> Personal Information</h2>
+                <form id="personalInfoForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" value="john.doe@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" value="+1 (555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Home Location</label>
+                        <input type="text" id="location" class="form-control" value="New York, USA">
+                    </div>
+                    <button type="submit" class="btn">Update Information</button>
+                </form>
+            </div>
+
+            <!-- Travel Preferences -->
+            <div class="section">
+                <h2><span class="icon">⚙️</span> Travel Preferences</h2>
+                <form id="preferencesForm">
+                    <div class="form-group">
+                        <label>Budget Range (per trip)</label>
+                        <input type="range" id="budgetRange" class="range-slider" min="500" max="10000" value="3000" oninput="updateBudgetValue(this.value)">
+                        <div class="range-value" id="budgetValue">$3,000</div>
+                    </div>
+                    
+                    <div class="preferences-grid">
+                        <div class="form-group">
+                            <label>Travel Style</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="radio" name="travelStyle" value="budget" checked>
+                                    Budget
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="radio" name="travelStyle" value="mid-range">
+                                    Mid-range
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="radio" name="travelStyle" value="luxury">
+                                    Luxury
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Accommodation Type</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked>
+                                    Hotels
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox">
+                                    Hostels
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked>
+                                    Airbnb
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" checked>
+                                Adventure
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" checked>
+                                Culture
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox">
+                                Food & Wine
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox">
+                                Photography
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" checked>
+                                Nature
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox">
+                                Nightlife
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Save Preferences</button>
+                </form>
+            </div>
+
+            <!-- Saved Trips -->
+            <div class="section full-width">
+                <h2><span class="icon">💾</span> Saved Trips</h2>
+                <div class="trip-card" onclick="viewTrip('tokyo')">
+                    <div class="trip-destination">🗾 Tokyo, Japan</div>
+                    <div class="trip-date">Saved on March 15, 2024 • 7 days • $2,800</div>
+                </div>
+                
+                <div class="trip-card" onclick="viewTrip('paris')">
+                    <div class="trip-destination">🗼 Paris, France</div>
+                    <div class="trip-date">Saved on February 28, 2024 • 5 days • $2,200</div>
+                </div>
+                
+                <div class="trip-card" onclick="viewTrip('bali')">
+                    <div class="trip-destination">🏝️ Bali, Indonesia</div>
+                    <div class="trip-date">Saved on January 10, 2024 • 10 days • $1,800</div>
+                </div>
+                
+                <div class="trip-card" onclick="viewTrip('iceland')">
+                    <div class="trip-destination">🏔️ Reykjavik, Iceland</div>
+                    <div class="trip-date">Saved on December 5, 2023 • 6 days • $3,500</div>
+                </div>
+                
+                <div class="trip-card" onclick="viewTrip('thailand')">
+                    <div class="trip-destination">🏯 Bangkok, Thailand</div>
+                    <div class="trip-date">Saved on November 22, 2023 • 8 days • $1,600</div>
+                </div>
+                
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="searchNewTrips()">
+                    🔍 Search for New Trips
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="floating-action" onclick="quickEdit()" title="Quick Edit">
+        ✏️
+    </button>
+
+    <script>
+        // Budget range slider
+        function updateBudgetValue(value) {
+            document.getElementById('budgetValue').textContent = '$' + parseInt(value).toLocaleString();
+        }
+
+        // Form submissions
+        document.getElementById('personalInfoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Personal information updated successfully!', 'success');
+        });
+
+        document.getElementById('preferencesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Travel preferences saved successfully!', 'success');
+        });
+
+        // Trip interactions
+        function viewTrip(destination) {
+            showNotification(`Loading trip details for ${destination}...`, 'info');
+            // Simulate navigation to trip details
+            setTimeout(() => {
+                showNotification(`Trip details loaded for ${destination}`, 'success');
+            }, 1000);
+        }
+
+        function searchNewTrips() {
+            showNotification('Redirecting to trip search...', 'info');
+            // Simulate navigation
+        }
+
+        function editAvatar() {
+            showNotification('Avatar editor coming soon!', 'info');
+        }
+
+        function quickEdit() {
+            showNotification('Quick edit mode activated!', 'info');
+        }
+
+        // Notification system
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'linear-gradient(135deg, #4CAF50, #45a049)' : 
+                             type === 'info' ? 'linear-gradient(135deg, #2196F3, #1976D2)' : 
+                             'linear-gradient(135deg, #FF5722, #D32F2F)'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                font-weight: 500;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to form controls
+            const formControls = document.querySelectorAll('.form-control');
+            formControls.forEach(control => {
+                control.addEventListener('focus', function() {
+                    this.parentNode.style.transform = 'scale(1.02)';
+                });
+                control.addEventListener('blur', function() {
+                    this.parentNode.style.transform = 'scale(1)';
+                });
+            });
+
+            // Animate sections on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

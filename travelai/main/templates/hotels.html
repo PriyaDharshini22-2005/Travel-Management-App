@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels - Trip Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 15px;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .page-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .trip-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .trip-info div {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+        .api-status {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .filters-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .filter-group select,
+        .filter-group input {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .hotels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .hotel-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .hotel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .hotel-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+        .hotel-content {
+            padding: 25px;
+        }
+        .hotel-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .hotel-location {
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .hotel-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+        .rating-text {
+            background: #4CAF50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        .hotel-features {
+            margin-bottom: 20px;
+        }
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .feature-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        .hotel-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2E7D32;
+        }
+        .price-per-night {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .select-hotel-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .select-hotel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .selected {
+            border: 3px solid #4CAF50;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+        .selected .select-hotel-btn {
+            background: #4CAF50;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: white;
+            font-size: 18px;
+        }
+        .error-message {
+            background: rgba(244, 67, 54, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .no-hotels {
+            text-align: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .trip-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-content">
+            <div class="logo">🌍 TripPlanner</div>
+            <div class="nav-links">
+                <a href="{% url 'trip_planner' %}">Plan Trip</a>
+                <a href="{% url 'hotels' %}" class="active">Hotels</a>
+                <a href="{% url 'places' %}">Places</a>
+                <a href="{% url 'expenses' %}">Expenses</a>
+                <a href="{% url 'profile' %}">Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-header">
+            <h1>🏨 Find Your Perfect Stay</h1>
+            <div class="trip-info">
+                <div>📍 <span id="destination">{{ trip_data.destination }}</span></div>
+                <div>📅 <span id="dates">{{ trip_data.start_date }} - {{ trip_data.end_date }}</span></div>
+                <div>👥 <span id="travelers">{{ trip_data.travelers }} {% if trip_data.travelers == '1' %}Traveler{% else %}Travelers{% endif %}</span></div>
+                <div>💰 <span id="budget">${{ trip_data.budget }}</span></div>
+            </div>
+            {% if api_source %}
+            <div class="api-status">
+                Data source: {{ api_source|title }} API | {{ total_hotels }} hotels found
+            </div>
+            {% endif %}
+        </div>
+        
+        {% if error_message %}
+        <div class="error-message">
+            <h3>⚠️ Error</h3>
+            <p>{{ error_message }}</p>
+            <p>Please try a different destination or check your internet connection.</p>
+        </div>
+        {% endif %}
+
+        <div class="filters-container">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="priceFilter">Price Range</label>
+                    <select id="priceFilter">
+                        <option value="">All Prices</option>
+                        <option value="budget">Budget (Under $100/night)</option>
+                        <option value="mid">Mid-range ($100-250/night)</option>
+                        <option value="luxury">Luxury ($250+/night)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="ratingFilter">Minimum Rating</label>
+                    <select id="ratingFilter">
+                        <option value="">Any Rating</option>
+                        <option value="6">Good (6+)</option>
+                        <option value="7">Very Good (7+)</option>
+                        <option value="8">Excellent (8+)</option>
+                        <option value="9">Exceptional (9+)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortFilter">Sort By</label>
+                    <select id="sortFilter">
+                        <option value="">Default</option>
+                        <option value="price_low">Price: Low to High</option>
+                        <option value="price_high">Price: High to Low</option>
+                        <option value="rating">Rating: High to Low</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="hotelTypeFilter">Hotel Type</label>
+                    <select id="hotelTypeFilter">
+                        <option value="">All Types</option>
+                        <option value="hotel">Hotels</option>
+                        <option value="apartment">Apartments</option>
+                        <option value="resort">Resorts</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="hotels-grid" id="hotelsGrid">
+            {% if not hotels_data and not error_message %}
+                <div class="loading">
+                    🔄 Loading hotels for {{ trip_data.destination }}...
+                </div>
+            {% elif not hotels_data %}
+                <div class="no-hotels">
+                    <h3>😔 No Hotels Found</h3>
+                    <p>We couldn't find any hotels for your search criteria.</p>
+                    <p>Try adjusting your dates or destination.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Hidden form for CSRF -->
+        <form id="hiddenForm" method="POST" style="display: none;">
+            {% csrf_token %}
+        </form>
+    </div>
+
+    <script>
+        // Hotel data from Django backend (now normalized)
+        const hotelsData = {{ hotels_data|safe }};
+        const tripData = {{ trip_data|safe }};
+        const apiSource = '{{ api_source }}';
+
+        let selectedHotel = null;
+        let filteredHotels = [...hotelsData];
+
+        function formatPrice(price) {
+            if (!price || price === 0) return 'Price on request';
+            return `$${Math.round(price)}`;
+        }
+
+        function getHotelImage(hotel) {
+            // Use the normalized max_photo_url field
+            if (hotel.max_photo_url && hotel.max_photo_url !== 'null' && hotel.max_photo_url !== null) {
+                return hotel.max_photo_url;
+            }
+            return null; // Will use CSS gradient background
+        }
+
+        function getHotelFeatures(hotel) {
+            const features = [];
+
+            // Use normalized boolean fields
+            if (hotel.is_free_cancellable) features.push('Free Cancellation');
+            if (hotel.has_swimming_pool) features.push('Swimming Pool');
+            if (hotel.is_beach_front) features.push('Beachfront');
+            if (hotel.has_free_parking) features.push('Free Parking');
+            if (hotel.is_city_center) features.push('City Center');
+
+            return features;
+        }
+
+        function getRatingText(score) {
+            if (!score || score === 0) return 'No Rating';
+            if (score >= 9) return 'Exceptional';
+            if (score >= 8) return 'Excellent';
+            if (score >= 7) return 'Very Good';
+            if (score >= 6) return 'Good';
+            return 'Fair';
+        }
+
+        function getLocationText(hotel) {
+            // Use normalized district and city fields
+            const district = hotel.district || '';
+            const city = hotel.city || '';
+            
+            if (district && city && district !== city) {
+                return `${district}, ${city}`;
+            } else if (district) {
+                return district;
+            } else if (city) {
+                return city;
+            }
+            return 'Location not specified';
+        }
+
+        function displayHotels(hotels) {
+            const hotelsGrid = document.getElementById('hotelsGrid');
+
+            if (!hotels || hotels.length === 0) {
+                hotelsGrid.innerHTML = `
+                    <div class="no-hotels">
+                        <h3>😔 No Hotels Found</h3>
+                        <p>No hotels match your current filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            hotelsGrid.innerHTML = '';
+            hotels.forEach(hotel => {
+                const hotelCard = document.createElement('div');
+                hotelCard.className = `hotel-card ${selectedHotel === hotel.hotel_id ? 'selected' : ''}`;
+
+                const imageUrl = getHotelImage(hotel);
+                const features = getHotelFeatures(hotel);
+                const price = hotel.min_total_price || 0;
+                const rating = hotel.review_score || 0;
+                const ratingText = hotel.review_score_word || getRatingText(rating);
+                const location = getLocationText(hotel);
+
+                hotelCard.innerHTML = `
+                    <div class="hotel-image" ${imageUrl ? `style="background-image: url('${imageUrl}')"` : ''}>
+                        ${!imageUrl ? '🏨' : ''}
+                    </div>
+                    <div class="hotel-content">
+                        <div class="hotel-name">${hotel.hotel_name || 'Hotel Name Not Available'}</div>
+                        <div class="hotel-location">📍 ${location}</div>
+                        <div class="hotel-rating">
+                            <div class="stars">${rating > 0 ? `⭐ ${rating.toFixed(1)}` : '⭐ N/A'}</div>
+                            <div class="rating-text">${ratingText}</div>
+                        </div>
+                        ${features.length > 0 ? `
+                        <div class="hotel-features">
+                            <div class="features-list">
+                                ${features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                        <div class="hotel-price">
+                            <div>
+                                <div class="price">${formatPrice(price)}</div>
+                                <div class="price-per-night">per night</div>
+                            </div>
+                        </div>
+                        <button class="select-hotel-btn" onclick="selectHotel('${hotel.hotel_id}', '${hotel.hotel_name.replace(/'/g, "\\'")}')">
+                            ${selectedHotel === hotel.hotel_id ? '✓ Selected' : 'Select Hotel'}
+                        </button>
+                    </div>
+                `;
+
+                hotelsGrid.appendChild(hotelCard);
+            });
+        }
+
+        function selectHotel(hotelId, hotelName) {
+            selectedHotel = hotelId;
+
+            // Find the selected hotel data
+            const hotel = hotelsData.find(h => h.hotel_id === hotelId);
+
+            // Update display
+            displayHotels(filteredHotels);
+
+            // Submit form to Django backend
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = window.location.href;
+
+            // Get CSRF token
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+            if (csrfToken) {
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = 'csrfmiddlewaretoken';
+                csrfInput.value = csrfToken.value;
+                form.appendChild(csrfInput);
+            }       
+            // Add hidden fields for the selected hotel’s ID and name
+        const hotelIdInput = document.createElement('input');
+        hotelIdInput.type = 'hidden';
+        hotelIdInput.name = 'selected_hotel_id';
+        hotelIdInput.value = hotelId;
+        form.appendChild(hotelIdInput);
+
+        const hotelNameInput = document.createElement('input');
+        hotelNameInput.type = 'hidden';
+        hotelNameInput.name = 'selected_hotel_name';
+        hotelNameInput.value = hotelName;
+        form.appendChild(hotelNameInput);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    // ----- Filter handling -----
+    const priceFilter = document.getElementById('priceFilter');
+    const ratingFilter = document.getElementById('ratingFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const hotelTypeFilter = document.getElementById('hotelTypeFilter');
+
+    function applyFilters() {
+        filteredHotels = hotelsData.filter(hotel => {
+            // Price filtering
+            let passPrice = true;
+            const price = hotel.min_total_price || 0;
+            if (priceFilter.value === 'budget') passPrice = price < 100;
+            else if (priceFilter.value === 'mid') passPrice = price >= 100 && price <= 250;
+            else if (priceFilter.value === 'luxury') passPrice = price > 250;
+
+            // Rating filtering
+            let passRating = true;
+            if (ratingFilter.value) passRating = (hotel.review_score || 0) >= parseFloat(ratingFilter.value);
+
+            // Hotel type filtering (assuming hotel.type is provided)
+            let passType = true;
+            if (hotelTypeFilter.value) passType = (hotel.hotel_type || '').toLowerCase() === hotelTypeFilter.value;
+
+            return passPrice && passRating && passType;
+        });
+
+        // Sorting
+        if (sortFilter.value === 'price_low') {
+            filteredHotels.sort((a, b) => (a.min_total_price || 0) - (b.min_total_price || 0));
+        } else if (sortFilter.value === 'price_high') {
+            filteredHotels.sort((a, b) => (b.min_total_price || 0) - (a.min_total_price || 0));
+        } else if (sortFilter.value === 'rating') {
+            filteredHotels.sort((a, b) => (b.review_score || 0) - (a.review_score || 0));
+        }
+
+        displayHotels(filteredHotels);
+    }
+
+    priceFilter.addEventListener('change', applyFilters);
+    ratingFilter.addEventListener('change', applyFilters);
+    sortFilter.addEventListener('change', applyFilters);
+    hotelTypeFilter.addEventListener('change', applyFilters);
+
+    // Initial render
+    displayHotels(filteredHotels);
+</script>
+</body>
+</html> 
