@@ -34,7 +34,6 @@ def register(request):
             messages.error(request, f"Registration failed: {str(e)}")
             return redirect('register')
     return render(request, 'register.html')
-
 def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
