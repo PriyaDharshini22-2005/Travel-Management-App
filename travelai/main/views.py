@@ -257,7 +257,6 @@ def get_city_code(destination):
 def test_api_connection():
     """Test API connection and return status"""
     results = {}
-    
     # Test Booking.com API
     try:
         response = requests.get(
