@@ -47,18 +47,14 @@ RAPIDAPI_KEY = config('RAPIDAPI_KEY', default='ca2612324dmsh11d6e898655fc72p10b4
 # Amadeus API (Alternative)
 AMADEUS_CLIENT_ID = config('AMADEUS_CLIENT_ID', default='')
 AMADEUS_CLIENT_SECRET = config('AMADEUS_CLIENT_SECRET', default='')
-
 # Expedia Rapid API (Alternative)
 EXPEDIA_RAPID_KEY = config('EXPEDIA_RAPID_KEY', default='')
 EXPEDIA_RAPID_SECRET = config('EXPEDIA_RAPID_SECRET', default='')
-
 # Hotels.com API (Alternative)
 HOTELS_COM_API_KEY = config('HOTELS_COM_API_KEY', default='')
-
 # API Settings
 API_TIMEOUT = 30  # seconds
 API_RETRY_COUNT = 3
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
