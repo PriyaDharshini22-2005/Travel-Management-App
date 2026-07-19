@@ -126,8 +126,7 @@ def search_hotels_amadeus(city_code, checkin_date, checkout_date, adults=2):
         'grant_type': 'client_credentials',
         'client_id': settings.AMADEUS_CLIENT_ID,
         'client_secret': settings.AMADEUS_CLIENT_SECRET
-    }
-    
+    } 
     try:
         token_response = requests.post(token_url, data=token_data, timeout=30)
         token_response.raise_for_status()
