@@ -204,7 +204,6 @@ def get_mock_hotels_data(destination, checkin_date, checkout_date, adults=2):
 def search_hotels_with_fallback(destination, checkin_date, checkout_date, adults=2):
     """Search hotels with multiple providers and fallback"""
     hotels_data = []
-    
     # Try Booking.com API first
     try:
         destination_info = search_destination_booking(destination)
