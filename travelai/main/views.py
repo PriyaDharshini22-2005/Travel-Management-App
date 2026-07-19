@@ -411,7 +411,6 @@ def apply_hotel_filters(hotels_data, price_filter=None, rating_filter=None, sort
             filtered = [h for h in filtered if 100 <= h.get('price_breakdown', {}).get('all_inclusive_price', 0) <= 250]
         elif price_filter == 'luxury':
             filtered = [h for h in filtered if h.get('price_breakdown', {}).get('all_inclusive_price', 0) > 250]
-
     if rating_filter:
         min_rating = float(rating_filter)
         filtered = [h for h in filtered if h.get('review_score', 0) >= min_rating]
