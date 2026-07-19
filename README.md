@@ -1,4 +1,4 @@
-# 🌍 Travel Management Application
+# Travel Management Application
 
 A full-stack **Travel Management System** built with **Next.js**, **Supabase**, **NextAuth.js**, and **Docker**. The application enables users to securely plan trips, create itineraries, and manage travel activities through an intuitive and responsive interface.
 
