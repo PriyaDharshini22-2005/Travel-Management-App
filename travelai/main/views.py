@@ -121,7 +121,6 @@ def search_hotels_amadeus(city_code, checkin_date, checkout_date, adults=2):
     """Alternative: Amadeus Hotel API"""
     if not hasattr(settings, 'AMADEUS_API_KEY') or not settings.AMADEUS_API_KEY:
         return []
-    
     # First get access token
     token_url = "https://test.api.amadeus.com/v1/security/oauth2/token"
     token_data = {
