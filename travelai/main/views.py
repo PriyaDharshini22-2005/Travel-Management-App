@@ -81,7 +81,6 @@ def search_destination_booking(destination_name):
     except requests.exceptions.RequestException as e:
         logger.error(f"Error searching destination: {e}")
         return None
-
 def search_hotels_booking(dest_id, checkin_date, checkout_date, adults=2):
     """Search for hotels using Booking.com API"""
     url = "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchHotels"
