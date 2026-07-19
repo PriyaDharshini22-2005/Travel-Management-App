@@ -101,8 +101,7 @@ def search_hotels_booking(dest_id, checkin_date, checkout_date, adults=2):
     headers = {
         "x-rapidapi-key": settings.RAPIDAPI_KEY,
         "x-rapidapi-host": "booking-com15.p.rapidapi.com"
-    }
-    
+    } 
     try:
         logger.info(f"Searching hotels for dest_id: {dest_id}")
         response = requests.get(url, headers=headers, params=querystring, timeout=30)
