@@ -75,7 +75,6 @@ def search_destination_booking(destination_name):
         response.raise_for_status()
         data = response.json()
         logger.info(f"API Response Data: {json.dumps(data, indent=2)[:500]}...")
-        
         if data.get('status') and data.get('data') and len(data['data']) > 0:
             return data['data'][0]
         return None
