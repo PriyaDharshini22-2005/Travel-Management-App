@@ -254,7 +254,6 @@ def get_city_code(destination):
         'dubai': 'DXB'
     }
     return city_codes.get(destination.lower())
-
 def test_api_connection():
     """Test API connection and return status"""
     results = {}
