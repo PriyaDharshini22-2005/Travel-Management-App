@@ -198,9 +198,3 @@ This project is licensed under the MIT License.
 
 ---
 
-## 👩‍💻 Author
-
-**Priyadharshini A**
-
-- BE CSE (AI & ML)
-- Chennai Institute of Technology
