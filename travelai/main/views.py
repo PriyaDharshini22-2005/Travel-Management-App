@@ -47,12 +47,10 @@ def login(request):
             messages.error(request, "Invalid email or password.")
             return redirect('login')
     return render(request, 'login.html')
-
 def logout(request):
     auth_logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('login')
-
 # ------------------- Static Pages -------------------
 def about(request):
     return render(request, 'about.html')
