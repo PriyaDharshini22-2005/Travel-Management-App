@@ -9,15 +9,11 @@ import requests
 import json
 import logging
 from .models import User
-
 # Set up logging
 logger = logging.getLogger(__name__)
-
 # ------------------- Auth Views -------------------
-
 def home(request):
     return render(request, 'home.html')
-
 def register(request):
     if request.method == 'POST':
         email = request.POST.get('email')
