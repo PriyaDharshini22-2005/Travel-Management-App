@@ -429,8 +429,7 @@ def apply_hotel_filters(hotels_data, price_filter=None, rating_filter=None, sort
     return filtered
 def normalize_hotel_data(hotels_data, api_source):
     """Normalize hotel data from different APIs to a consistent format"""
-    normalized_hotels = []
-    
+    normalized_hotels = []  
     for hotel in hotels_data:
         try:
             if api_source == "booking":
