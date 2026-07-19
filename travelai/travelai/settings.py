@@ -43,7 +43,6 @@ AUTH_USER_MODEL = 'main.User'  # Replace 'main' with your app name
 # API Configuration - Use environment variables for security
 # RapidAPI (Booking.com)
 RAPIDAPI_KEY = config('RAPIDAPI_KEY', default='ca2612324dmsh11d6e898655fc72p10b463jsnffd04ba8bf2e')
-
 # Amadeus API (Alternative)
 AMADEUS_CLIENT_ID = config('AMADEUS_CLIENT_ID', default='')
 AMADEUS_CLIENT_SECRET = config('AMADEUS_CLIENT_SECRET', default='')
