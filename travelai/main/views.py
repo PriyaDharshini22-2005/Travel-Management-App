@@ -336,7 +336,6 @@ def hotels(request):
         "api_source": api_source,
         "total_hotels": len(hotels_data)
     }
-
     return render(request, 'hotels.html', context)
 
 def places(request):
