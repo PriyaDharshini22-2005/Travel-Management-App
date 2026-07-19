@@ -54,18 +54,13 @@ def logout(request):
     return redirect('login')
 
 # ------------------- Static Pages -------------------
-
 def about(request):
     return render(request, 'about.html')
-
 def contact(request):
     return render(request, 'contact.html')
-
 def profile_page(request):
     return render(request, 'profile_page.html')
-
 # ------------------- Enhanced API Helper Functions -------------------
-
 def search_destination_booking(destination_name):
     """Search for destination using Booking.com API (RapidAPI)"""
     url = "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination"
@@ -73,14 +68,12 @@ def search_destination_booking(destination_name):
     headers = {
         "x-rapidapi-key": settings.RAPIDAPI_KEY,
         "x-rapidapi-host": "booking-com15.p.rapidapi.com"
-    }
-    
+    } 
     try:
         logger.info(f"Searching destination: {destination_name}")
         response = requests.get(url, headers=headers, params=querystring, timeout=30)
         logger.info(f"API Response Status: {response.status_code}")
         logger.info(f"API Response Headers: {dict(response.headers)}")
-        
         response.raise_for_status()
         data = response.json()
         logger.info(f"API Response Data: {json.dumps(data, indent=2)[:500]}...")
