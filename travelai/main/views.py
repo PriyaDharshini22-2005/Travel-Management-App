@@ -151,7 +151,6 @@ def search_hotels_amadeus(city_code, checkin_date, checkout_date, adults=2):
     except requests.exceptions.RequestException as e:
         logger.error(f"Amadeus API error: {e}")
         return []
-
 def get_mock_hotels_data(destination, checkin_date, checkout_date, adults=2):
     """Fallback: Mock hotel data for development/testing"""
     return [
