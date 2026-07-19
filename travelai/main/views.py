@@ -285,7 +285,6 @@ def test_api_connection():
         }
     
     return results
-
 # ------------------- Updated Trip Planner Flow -------------------
 
 def trip_planner(request):
