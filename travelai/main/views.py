@@ -674,7 +674,6 @@ def search_tourist_places_opentripmap(lat, lng, radius=5000):
     """Search tourist places using OpenTripMap API"""
     if not hasattr(settings, 'OPENTRIPMAP_API_KEY'):
         return []
-    
     url = "https://api.opentripmap.com/0.1/en/places/radius"
     params = {
         'radius': radius,
