@@ -639,12 +639,9 @@ def filter_hotels(request):
     except Exception as e:
         logger.error(f"Error in filter_hotels: {e}")
         return JsonResponse({'error': 'Failed to filter hotels'}, status=500)
-    
 import requests
 from django.conf import settings
-
 # Add to your views.py
-
 def get_destination_coordinates(destination_name):
     """Get coordinates for a destination using OpenCage Geocoding API"""
     if not hasattr(settings, 'OPENCAGE_API_KEY'):
