@@ -29,9 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     objects = UserManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []  # add 'full_name' if you want it required
-
     def __str__(self):
         return self.email
