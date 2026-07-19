@@ -248,7 +248,6 @@ def search_hotels_with_fallback(destination, checkin_date, checkout_date, adults
     logger.warning("Using mock hotel data as fallback")
     hotels_data = get_mock_hotels_data(destination, checkin_date, checkout_date, adults)
     return hotels_data, "mock"
-
 def get_city_code(destination):
     """Convert destination name to city code for Amadeus API"""
     # This is a simplified mapping - in production, use a geocoding service
