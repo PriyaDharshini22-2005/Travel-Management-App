@@ -117,7 +117,6 @@ def search_hotels_booking(dest_id, checkin_date, checkout_date, adults=2):
     except requests.exceptions.RequestException as e:
         logger.error(f"Error searching hotels: {e}")
         return []
-
 def search_hotels_amadeus(city_code, checkin_date, checkout_date, adults=2):
     """Alternative: Amadeus Hotel API"""
     if not hasattr(settings, 'AMADEUS_API_KEY') or not settings.AMADEUS_API_KEY:
