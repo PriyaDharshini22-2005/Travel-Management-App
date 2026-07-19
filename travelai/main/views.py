@@ -222,7 +222,6 @@ def search_hotels_with_fallback(destination, checkin_date, checkout_date, adults
                 return hotels_data, "booking"
     except Exception as e:
         logger.error(f"Booking.com API failed: {e}")
-    
     # Try Amadeus API as fallback
     try:
         # You'll need city codes mapping or geocoding service
