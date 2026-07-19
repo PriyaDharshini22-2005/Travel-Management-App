@@ -425,7 +425,6 @@ def apply_hotel_filters(hotels_data, price_filter=None, rating_filter=None, sort
             filtered.sort(key=lambda h: h.get('price_breakdown', {}).get('all_inclusive_price', 0), reverse=True)
         elif sort_filter == 'rating':
             filtered.sort(key=lambda h: h.get('review_score', 0), reverse=True)
-
     return filtered
 def normalize_hotel_data(hotels_data, api_source):
     """Normalize hotel data from different APIs to a consistent format"""
@@ -498,19 +497,14 @@ def normalize_hotel_data(hotels_data, api_source):
                     'accessibility_label': hotel.get('accessibilityLabel', ''),
                     'price_breakdown': hotel.get('price_breakdown', {})
                 }
-            
             normalized_hotels.append(normalized_hotel)
-            
         except Exception as e:
             logger.error(f"Error normalizing hotel data: {e}")
             continue
-    
     return normalized_hotels
-
 def search_hotels_with_fallback(destination, checkin_date, checkout_date, adults=2):
     """Search hotels with multiple providers and fallback - Updated with normalization"""
     hotels_data = []
-    
     # Try Booking.com API first
     try:
         destination_info = search_destination_booking(destination)
@@ -527,7 +521,6 @@ def search_hotels_with_fallback(destination, checkin_date, checkout_date, adults
                 return hotels_data, "booking"
     except Exception as e:
         logger.error(f"Booking.com API failed: {e}")
-    
     # Try Amadeus API as fallback
     try:
         city_code = get_city_code(destination)
@@ -544,24 +537,20 @@ def search_hotels_with_fallback(destination, checkin_date, checkout_date, adults
                 return hotels_data, "amadeus"
     except Exception as e:
         logger.error(f"Amadeus API failed: {e}")
-    
     # Use mock data as final fallback
     logger.warning("Using mock hotel data as fallback")
     raw_hotels = get_mock_hotels_data(destination, checkin_date, checkout_date, adults)
     hotels_data = normalize_hotel_data(raw_hotels, "mock")
     return hotels_data, "mock"
-
 # Updated hotels view
 def hotels(request):
     trip_data = request.session.get('trip_data')
     if not trip_data:
         messages.error(request, "No trip data found. Please plan your trip first.")
         return redirect('trip_planner')
-
     hotels_data = []
     error_message = None
     api_source = None
-
     try:
         # Use the improved search function with fallback
         hotels_data, api_source = search_hotels_with_fallback(
@@ -570,7 +559,6 @@ def hotels(request):
             checkout_date=trip_data['end_date'],
             adults=int(trip_data.get('travelers', 2))
         )
-        
         if not hotels_data:
             error_message = f"No hotels found for {trip_data['destination']}. Please try a different destination."
         
