@@ -9,21 +9,15 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config  # pip install python-decouple
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', default="django-insecure-2klnkn=s85r)#0)-e-84%-w#)86_8liu^)00)^=3xitj0y=75t")
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
-
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=lambda x: [s.strip() for s in x.split(',')])
-
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -44,11 +38,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
 ROOT_URLCONF = "travelai.urls"
-
 AUTH_USER_MODEL = 'main.User'  # Replace 'main' with your app name
-
 # API Configuration - Use environment variables for security
 # RapidAPI (Booking.com)
 RAPIDAPI_KEY = config('RAPIDAPI_KEY', default='ca2612324dmsh11d6e898655fc72p10b463jsnffd04ba8bf2e')
